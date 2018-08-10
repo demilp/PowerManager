@@ -3,16 +3,23 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Power Manager</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <div id="buttons">
+    <button class="power-button" ion-button secondary (click)="do('Shutdown')">Shutdown</button>
+    <button class="power-button" ion-button secondary (click)="do('Restart')">Restart</button>
+    <button class="power-button" ion-button secondary (click)="do('Sleep')">Sleep</button>
+    <button class="power-button" ion-button secondary (click)="do('Hibernate')">Hibernate</button>
+    <button class="power-button" ion-button secondary (click)="do('Lock')">Lock</button>
+    <button class="power-button" ion-button secondary (click)="do('LogOff')">Log Off</button>
+    <button class="power-button" ion-button secondary (click)="do('ScreenOn')">Screen On</button>
+    <button class="power-button" ion-button secondary (click)="do('ScreenOff')">Screen Off</button>
+  </div>
+  <ion-fab id="logout">
+    <button ion-fab (click)="logOut()"><ion-icon name="md-log-out"></ion-icon></button>
+  </ion-fab>
 </ion-content>
+

@@ -17,13 +17,13 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-label color="primary" stacked placeholder="IP">IP Address</ion-label>
-      <ion-input type="text" placeholder="IP" ></ion-input>
+      <ion-label color="primary" stacked placeholder="IP" >IP Address</ion-label>
+      <ion-input type="text" placeholder="IP" [(ngModel)]="ip"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" stacked>Password</ion-label>
-      <ion-input type="password" placeholder="Password"></ion-input>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
     </ion-item>
     <ion-item>
       <button ion-button (click)="onConnect()">Connect</button>

@@ -8,7 +8,10 @@ import { ConnectPage } from '../pages/connect/connect';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-//import { PowerProvider } from '../providers/power/power';
+import { PowerProvider } from '../providers/power/power';
+import { ProcessHttpMsgProvider } from "../providers/process-http-msg/process-http-msg";
+//import { HttpClient, HttpHandler } from '../../node_modules/@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,7 +34,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    //PowerProvider
+    PowerProvider,
+    ProcessHttpMsgProvider,
   ]
 })
 export class AppModule {}

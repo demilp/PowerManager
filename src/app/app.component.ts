@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ViewController, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -12,19 +12,32 @@ import { ConnectPage } from '../pages/connect/connect';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = ConnectPage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private app: App) {
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Connect', component: ConnectPage }
     ];
 
+    platform.registerBackButtonAction(() => {
+      let nav = app.getActiveNav();
+      let activeView: ViewController = nav.getActive();
+  
+      if(activeView != null){
+        if (typeof activeView.instance.backButtonAction === 'function'){
+          activeView.instance.backButtonAction()
+        }else if(nav.canGoBack()) {
+          nav.pop();
+        }
+        else nav.parent.select(0);
+      }
+    });
+    
   }
 
   initializeApp() {
