@@ -5,19 +5,22 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ConnectPage } from '../pages/connect/connect';
+import { KillProcessPage } from '../pages/kill-process/kill-process';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PowerProvider } from '../providers/power/power';
 import { ProcessHttpMsgProvider } from "../providers/process-http-msg/process-http-msg";
 //import { HttpClient, HttpHandler } from '../../node_modules/@angular/common/http';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { Toast } from '../../node_modules/@ionic-native/toast';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ConnectPage
+    ConnectPage,
+    KillProcessPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   entryComponents: [
     MyApp,
     HomePage,
-    ConnectPage
+    ConnectPage,
+    KillProcessPage
   ],
   providers: [
     StatusBar,
@@ -36,6 +40,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PowerProvider,
     ProcessHttpMsgProvider,
+    Toast
   ]
 })
 export class AppModule {}

@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
 export class ProcessHttpMsgProvider {
 
   constructor() {
-    console.log('Hello ProcessHttpMsgProvider Provider');
   }
   public handleError(error: HttpErrorResponse | any) {
+    console.log(error);
+    
     let errMsg: string;
 
     if (error.error instanceof Error) {

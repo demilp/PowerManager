@@ -21,26 +21,38 @@ export class PowerProvider {
     })
   };
   constructor(public http: HttpClient, private processHttpMsgProvider: ProcessHttpMsgProvider) {
-    console.log('Hello PowerServiceProvider Provider');  
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
       })
     };
   }
-  connect(ip:string, password:string):Promise<{success:Boolean, ip:string, password:string}>{
+  connect(ip:string, password:string):Promise<{success:Boolean, error:string, data:any, ip:string, password:string}>{
     
     //return this.http.post<{success:Boolean, ip:string, password:string}>('http://' + ip + '/powermanager/connect', password)
-    return this.http.post<{success:Boolean, ip:string, password:string}>('http://' + ip + '/powermanager/Connect', password, this.httpOptions)
-    .catch(err=>{return this.processHttpMsgProvider.handleError(err)}).map(res => {return {success:res, ip:ip, password:password}}).toPromise<{success:Boolean, ip:string, password:string}>();
-  }
-  do(command:string):Promise<Boolean>{
-    var url = 'http://' + localStorage.getItem('ip') + '/powermanager/'+command;
+    let url = 'http://' + ip + ':63158/Connect';
     console.log(url);
-    
-    return this.http.post<Boolean>(url, localStorage.getItem('password'), this.httpOptions)
-    .catch(err=>{return this.processHttpMsgProvider.handleError(err)}).toPromise<Boolean>();
+    return this.http.post<{success:Boolean, error:string, data:any, ip:string, password:string}>(url, password, this.httpOptions)
+    .catch(err=>{
+      return this.processHttpMsgProvider.handleError(err)})
+      .map(res => {
+        let r = {success:res.success, ip:ip, password:password, data: res.data, error: res.error};
+        return r
+      })
+      .toPromise<{success:Boolean, ip:string, password:string, data:any, error:string}>();
   }
-
+  do(command:string):Promise<{success:Boolean, error:string, data:any}>{
+    var url = 'http://' + localStorage.getItem('ip') + ':63158/'+command;    
+    return this.http.post<{success:Boolean, error:string, data:any}>(url, localStorage.getItem('password'), this.httpOptions)
+    .catch(err=>{return this.processHttpMsgProvider.handleError(err)})
+    .toPromise<{success:Boolean, error:string, data:any}>();
+  }
+  killProcess(pid: number):Promise<{success:Boolean, error:string, data:any}>{
+    let url = 'http://'+ localStorage.getItem('ip') + ':63158/KillProcess/'+pid;
+    return this.http.post<{success:Boolean, error:string, data:any}>(url, localStorage.getItem('password'), this.httpOptions)
+    .catch(err=>{
+      return this.processHttpMsgProvider.handleError(err)
+    })
+    .toPromise<{success:Boolean, data:any, error:string}>();
+  }
 }

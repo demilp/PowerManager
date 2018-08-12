@@ -13,10 +13,11 @@
     <button class="power-button" ion-button secondary (click)="do('Restart')">Restart</button>
     <button class="power-button" ion-button secondary (click)="do('Sleep')">Sleep</button>
     <button class="power-button" ion-button secondary (click)="do('Hibernate')">Hibernate</button>
-    <button class="power-button" ion-button secondary (click)="do('Lock')">Lock</button>
-    <button class="power-button" ion-button secondary (click)="do('LogOff')">Log Off</button>
-    <button class="power-button" ion-button secondary (click)="do('ScreenOn')">Screen On</button>
-    <button class="power-button" ion-button secondary (click)="do('ScreenOff')">Screen Off</button>
+    <button class="power-button" ion-button secondary (click)="openKillProcess()">Kill process</button>
+    <!--<button class="power-button" ion-button secondary (click)="do('Lock')">Lock</button>-->
+    <!--<button class="power-button" ion-button secondary (click)="do('LogOff')">Log Off</button>-->
+    <!--<button class="power-button" ion-button secondary (click)="do('ScreenOn')">Screen On</button>-->
+    <!--<button class="power-button" ion-button secondary (click)="do('ScreenOff')">Screen Off</button>-->
   </div>
   <ion-fab id="logout">
     <button ion-fab (click)="logOut()"><ion-icon name="md-log-out"></ion-icon></button>
