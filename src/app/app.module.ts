@@ -14,13 +14,16 @@ import { ProcessHttpMsgProvider } from "../providers/process-http-msg/process-ht
 //import { HttpClient, HttpHandler } from '../../node_modules/@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Toast } from '../../node_modules/@ionic-native/toast';
+import { DevicesPage } from '../pages/devices/devices';
+import { DevicesProvider } from '../providers/devices/devices';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ConnectPage,
-    KillProcessPage
+    KillProcessPage,
+    DevicesPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { Toast } from '../../node_modules/@ionic-native/toast';
     MyApp,
     HomePage,
     ConnectPage,
-    KillProcessPage
+    KillProcessPage,
+    DevicesPage
   ],
   providers: [
     StatusBar,
@@ -40,7 +44,8 @@ import { Toast } from '../../node_modules/@ionic-native/toast';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PowerProvider,
     ProcessHttpMsgProvider,
-    Toast
+    Toast,
+    DevicesProvider
   ]
 })
 export class AppModule {}

@@ -3,8 +3,8 @@ import { Nav, Platform, ViewController, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { ConnectPage } from '../pages/connect/connect';
+import { DevicesPage } from '../pages/devices/devices';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,8 +20,8 @@ export class MyApp {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Connect', component: ConnectPage }
+      { title: 'Connect', component: ConnectPage },
+      { title: 'Devices', component: DevicesPage }
     ];
 
     platform.registerBackButtonAction(() => {

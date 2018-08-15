@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/catch';
 import { ProcessHttpMsgProvider } from '../process-http-msg/process-http-msg';
+import { Device } from '../../shared/device';
+import { wake } from "wake_on_lan";
 
 /*
   Generated class for the PowerServiceProvider provider.
@@ -31,7 +33,6 @@ export class PowerProvider {
     
     //return this.http.post<{success:Boolean, ip:string, password:string}>('http://' + ip + '/powermanager/connect', password)
     let url = 'http://' + ip + ':63158/Connect';
-    console.log(url);
     return this.http.post<{success:Boolean, error:string, data:any, ip:string, password:string}>(url, password, this.httpOptions)
     .catch(err=>{
       return this.processHttpMsgProvider.handleError(err)})
@@ -54,5 +55,8 @@ export class PowerProvider {
       return this.processHttpMsgProvider.handleError(err)
     })
     .toPromise<{success:Boolean, data:any, error:string}>();
+  }
+  wol(d: Device){
+    wake(d.mac);
   }
 }

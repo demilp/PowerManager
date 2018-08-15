@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { PowerProvider } from '../../providers/power/power';
-import { Toast } from '../../../node_modules/@ionic-native/toast';
 
 /**
  * Generated class for the KillProcessPage page.
@@ -16,7 +15,7 @@ import { Toast } from '../../../node_modules/@ionic-native/toast';
 })
 export class KillProcessPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private powerProvider: PowerProvider, private toast: Toast) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private powerProvider: PowerProvider, private toast: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -25,9 +24,11 @@ export class KillProcessPage {
   ionViewWillEnter(){
     this.processList = null;
     this.powerProvider.do('ListProcesses').then(res =>{
+      console.log(res);
+      
       this.processList = res.data;
     }).catch(err=>{
-      this.toast.show(err, 'short', 'bottom');
+      this.toast.create({message:err, duration:1500, position:'bottom'});;
       this.navCtrl.pop();
     });
   }
@@ -35,12 +36,12 @@ export class KillProcessPage {
     this.powerProvider.killProcess(pid)
     .then(res=>{
       if(res.success == true){
-        this.toast.show('Success', 'short', 'bottom');
+        this.toast.create({message:'Success', duration:1500, position:'bottom'});
       }else{
-        this.toast.show(res.error, 'short', 'bottom');
+        this.toast.create({message:res.error, duration:1500, position:'bottom'});
       }
     }).catch(err=>{
-      this.toast.show(err, 'short', 'bottom');
+      this.toast.create({message:err, duration:1500, position:'bottom'});
     });
   }
 
