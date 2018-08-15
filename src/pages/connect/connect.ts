@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, MenuController } from 'ionic-angular';
 import { PowerProvider } from '../../providers/power/power';
 import { HomePage } from "../home/home";
-import { wake } from "wake_on_lan";
 import { DevicesProvider } from '../../providers/devices/devices';
 
 
@@ -40,9 +39,9 @@ export class ConnectPage {
         this.devices.addDevice({ip:res.ip, mac:res.data.mac, hostname: res.data.hostname, password:res.password});
         this.navCtrl.popToRoot();
       }else{
-        this.toast.create({message:res.error, duration:1500, position:'bottom'});
+        this.toast.create({message:res.error, duration:1500, position:'bottom'}).present();
       }
-    }, err=>{this.toast.create({message:err, duration:1500, position:'bottom'});})
-    .catch(err=>{this.toast.create({message:err, duration:1500, position:'bottom'});});
+    }, err=>{this.toast.create({message:err, duration:1500, position:'bottom'}).present();})
+    .catch(err=>{this.toast.create({message:err, duration:1500, position:'bottom'}).present();});
   }
 }

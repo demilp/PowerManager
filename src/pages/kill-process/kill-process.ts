@@ -28,7 +28,7 @@ export class KillProcessPage {
       
       this.processList = res.data;
     }).catch(err=>{
-      this.toast.create({message:err, duration:1500, position:'bottom'});;
+      this.toast.create({message:err, duration:1500, position:'bottom'}).present();
       this.navCtrl.pop();
     });
   }
@@ -36,12 +36,12 @@ export class KillProcessPage {
     this.powerProvider.killProcess(pid)
     .then(res=>{
       if(res.success == true){
-        this.toast.create({message:'Success', duration:1500, position:'bottom'});
+        this.toast.create({message:'Success', duration:1500, position:'bottom'}).present();
       }else{
-        this.toast.create({message:res.error, duration:1500, position:'bottom'});
+        this.toast.create({message:res.error, duration:1500, position:'bottom'}).present();
       }
     }).catch(err=>{
-      this.toast.create({message:err, duration:1500, position:'bottom'});
+      this.toast.create({message:err, duration:1500, position:'bottom'}).present();
     });
   }
 

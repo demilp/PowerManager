@@ -26,12 +26,12 @@ export class HomePage {
     this.powerProvider.do(command)
     .then(res=>{
       if(res.success == true){
-        this.toast.create({message:'Success', duration:1500, position:'bottom'});
+        this.toast.create({message:'Success', duration:1500, position:'bottom'}).present();
       }else{
-        this.toast.create({message:'Failure', duration:1500, position:'bottom'});
+        this.toast.create({message:'Failure', duration:1500, position:'bottom'}).present();
       }
     })
-    .catch(err=>{this.toast.create({message:err, duration:1500, position:'bottom'});
+    .catch(err=>{this.toast.create({message:err, duration:1500, position:'bottom'}).present();
     });
   }
   openKillProcess(){
