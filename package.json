@@ -20,6 +20,7 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/android-permissions": "^4.11.0",
     "@ionic-native/core": "~4.11.0",
     "@ionic-native/splash-screen": "~4.11.0",
     "@ionic-native/status-bar": "~4.11.0",
@@ -28,6 +29,9 @@
     "@ionic/storage": "2.1.3",
     "cordova-android": "7.0.0",
     "cordova-browser": "5.0.4",
+    "cordova-plugin-android-permissions": "^1.0.0",
+    "cordova-plugin-chrome-apps-common": "^1.0.7",
+    "cordova-plugin-chrome-apps-sockets-udp": "^1.3.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.0.2",
@@ -50,7 +54,9 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-chrome-apps-sockets-udp": {},
+      "cordova-plugin-android-permissions": {}
     },
     "platforms": [
       "android",

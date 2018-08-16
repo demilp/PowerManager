@@ -15,18 +15,21 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label color="primary" stacked placeholder="IP" >IP Address</ion-label>
-      <ion-input type="text" placeholder="IP" [(ngModel)]="ip"></ion-input>
-    </ion-item>
+  <div id="content">
+    <div id="connectForm">  
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary" stacked placeholder="IP" >IP Address</ion-label>
+          <ion-input type="text" placeholder="IP" [(ngModel)]="ip"></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" stacked>Password</ion-label>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button (click)="onConnect()">Connect</button>
-    </ion-item>
-  </ion-list>
+        <ion-item>
+          <ion-label color="primary" stacked>Password</ion-label>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+
+      </ion-list>
+      <button ion-button secondary (click)="onConnect()">Connect</button>
+    </div>
+  </div>
 </ion-content>

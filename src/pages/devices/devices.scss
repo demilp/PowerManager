@@ -10,15 +10,17 @@ page-devices {
 .device{
     width: 75%;
 }
-/deep/.button-inner{
+.hostname-btn .button-inner{
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
 }
-.hostname{
+.hostname-btn{
     flex-grow: 1;
 }
-
 .dev-element{
     box-shadow: none;
     border-radius: 0;
+}
+.ip{
+    font-weight: 100;
 }

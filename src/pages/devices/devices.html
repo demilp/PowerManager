@@ -20,8 +20,8 @@
           <button class="power dev-element" ion-button secondary (click)="wol(device)">
               <ion-icon name="md-power"></ion-icon>
           </button>
-          <button class="hostname dev-element" ion-button secondary (click)="connect(device)">
-              {{device.hostname}}
+          <button class="hostname-btn dev-element" ion-button secondary (click)="connect(device)">
+            <span class="hostname-cnt"><span>{{device.hostname}}</span>&nbsp;<span class="ip">({{device.ip}}&nbsp;-&nbsp;{{device.mac}})</span></span>
           </button>
           <button class="close dev-element" ion-button secondary (click)="remove(device)">
               <ion-icon name="md-close"></ion-icon>

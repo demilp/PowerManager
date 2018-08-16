@@ -31,7 +31,8 @@ export class HomePage {
         this.toast.create({message:'Failure', duration:1500, position:'bottom'}).present();
       }
     })
-    .catch(err=>{this.toast.create({message:err, duration:1500, position:'bottom'}).present();
+    .catch(err=>{console.log(err);
+     this.toast.create({message:err, duration:1500, position:'bottom'}).present();
     });
   }
   openKillProcess(){

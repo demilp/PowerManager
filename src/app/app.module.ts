@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { Toast } from '../../node_modules/@ionic-native/toast';
 import { DevicesPage } from '../pages/devices/devices';
 import { DevicesProvider } from '../providers/devices/devices';
+import { UdpProvider } from '../providers/udp/udp';
+import { WakeOnLanProvider } from '../providers/wake-on-lan/wake-on-lan';
+import { AndroidPermissions } from '../../node_modules/@ionic-native/android-permissions';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { DevicesProvider } from '../providers/devices/devices';
     PowerProvider,
     ProcessHttpMsgProvider,
     Toast,
-    DevicesProvider
+    DevicesProvider,
+    UdpProvider,
+    WakeOnLanProvider,
+    AndroidPermissions
   ]
 })
 export class AppModule {}

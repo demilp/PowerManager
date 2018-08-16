@@ -12,9 +12,7 @@ export class DevicesProvider {
 
   private devices: Device[];
   constructor() {
-    let d = localStorage.getItem('devices');
-    console.log('---');
-    console.log(d);    
+    let d = localStorage.getItem('devices');  
     if(d !== 'undefined'){
       let dev = JSON.parse(d);
       if(dev instanceof Array){
@@ -31,6 +29,9 @@ export class DevicesProvider {
     return this.devices;
   }
   addDevice(d: Device): Device[]{
+    if(this.devices == undefined){
+      this.devices = [];
+    }
     if(this.devices.find(c=>c.mac == d.mac)){
       return;
     }

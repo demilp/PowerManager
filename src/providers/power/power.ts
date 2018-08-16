@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import { ProcessHttpMsgProvider } from '../process-http-msg/process-http-msg';
 import { Device } from '../../shared/device';
-import { wake } from "wake_on_lan";
 
 /*
   Generated class for the PowerServiceProvider provider.
@@ -57,6 +56,6 @@ export class PowerProvider {
     .toPromise<{success:Boolean, data:any, error:string}>();
   }
   wol(d: Device){
-    wake(d.mac);
+    
   }
 }
