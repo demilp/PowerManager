@@ -39,15 +39,7 @@ export class WakeOnLanProvider {
     for (i = this.mac_bytes; i < buffer.byteLength; i++) {
       buffer[i] = mac_buffer[i%this.mac_bytes]
     }
-    /*for (i = 0; i < num_macs; ++i) {
-      mac_buffer.buffer.(buffer, (i + 1) * this.mac_bytes, 0, mac_buffer.length)
-    }*/
     return buffer.buffer;
-  }
-  wol2(mac){
-    for (let i = 0; i < 3; i++) {
-      setTimeout(()=>{this.udp.sendMagicPacket(mac, 9000, '255.255.255.255');}, 100*i);
-    }    
   }
   wol(mac, opts?, callback?){
     if (typeof opts === 'function') {
@@ -70,6 +62,6 @@ export class WakeOnLanProvider {
       }    
   }
   private sendWoL(message: ArrayBuffer, port: number, addresses: Array<string>) {
-    this.udp.sendUDPMessage(message, port, addresses); //send(magic_packet, 0, magic_packet.length, port, address, post_write);
+    this.udp.sendUDPMessage(message, port, addresses);
   }
 }

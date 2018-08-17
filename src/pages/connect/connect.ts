@@ -39,7 +39,7 @@ export class ConnectPage {
         this.devices.addDevice({ip:res.ip, mac:res.data.mac, hostname: res.data.hostname, password:res.password});
         this.navCtrl.popToRoot();
       }else{
-        this.toast.create({message:res.error, duration:1500, position:'bottom'}).present();
+        this.toast.create({message:'Incorrect password', duration:1500, position:'bottom'}).present();
       }
     }, err=>{this.toast.create({message:err, duration:1500, position:'bottom'}).present();})
     .catch(err=>{this.toast.create({message:err, duration:1500, position:'bottom'}).present();});

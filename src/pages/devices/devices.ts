@@ -31,11 +31,6 @@ export class DevicesPage {
     this.devices = this.devicesProvider.getDevices();
   }
   wol(d: Device){
-    /*this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.INTERNET).then(
-      result => console.log('Has permission?',result.hasPermission),
-      err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.INTERNET)
-    );*/
-    this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.INTERNET);
     this.wakeOnLan.wol(d.mac);
   }
   connect(d: Device){

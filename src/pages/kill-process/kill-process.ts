@@ -38,7 +38,7 @@ export class KillProcessPage {
       if(res.success == true){
         this.toast.create({message:'Success', duration:1500, position:'bottom'}).present();
       }else{
-        this.toast.create({message:res.error, duration:1500, position:'bottom'}).present();
+        this.toast.create({message:'Failure', duration:1500, position:'bottom'}).present();
       }
     }).catch(err=>{
       this.toast.create({message:err, duration:1500, position:'bottom'}).present();
